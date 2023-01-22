@@ -17,32 +17,60 @@ namespace WindowsFormsApp_Helper
             InitializeComponent();
         }
 
+        /// <summary>
+        /// クリックイベント
+        /// </summary>
+        /// <param name="sender">送信元</param>
+        /// <param name="e">イベント</param>
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBox1.Text))
+            try
             {
-                string[] textList = textBox1.Text.Split(new[] { "\r\n" }, StringSplitOptions.None);
-
-                string addText = ChangeText(textList);
-                MessageBox.Show(addText, "コピー完了");
-                Clipboard.SetText(addText);
-                this.textBox1.Clear();
+                if (!string.IsNullOrEmpty(textBox1.Text))
+                {
+                    string[] textList = textBox1.Text.Split(new[] { "\r\n" }, StringSplitOptions.None);
+                    string addText = ChangeText(textList);
+                    Clipboard.SetText(addText);
+                    MessageBox.Show(addText, "コピー完了");
+                    textBox1.Clear();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
         }
 
+        /// <summary>
+        /// クリックイベント
+        /// </summary>
+        /// <param name="sender">送信元</param>
+        /// <param name="e">イベント</param>
         private void Button2_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBox2.Text))
+            try
             {
-                string[] textList = textBox2.Text.Split(new[] { "\r\n" }, StringSplitOptions.None);
-
-                string addText = ChangeText(textList);
-                MessageBox.Show(addText, "コピー完了");
-                Clipboard.SetText(addText);
-                this.textBox2.Clear();
+                if (!string.IsNullOrEmpty(textBox2.Text))
+                {
+                    string[] textList = textBox2.Text.Split(new[] { "\r\n" }, StringSplitOptions.None);
+                    string addText = ChangeText(textList);
+                    Clipboard.SetText(addText);
+                    MessageBox.Show(addText, "コピー完了");
+                    textBox2.Clear();
+                }
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
             }
         }
+        
+        /// <summary>
+        /// 文字加工メソッド
+        /// </summary>
+        /// <param name="text">入力内容</param>
+        /// <returns>文字列(入力内容をシングルコートで囲む)</returns>
         private string ChangeText(string[] text)
         {
             string[] array = new string[text.Length];
@@ -65,6 +93,20 @@ namespace WindowsFormsApp_Helper
                 }
             }
             return string.Join("\r\n", array);
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            string dateTime = DateTime.Now.ToString("yyyy-MM-dd");
+            MessageBox.Show(dateTime);
+            Clipboard.SetText(dateTime);
+        }
+
+       
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
