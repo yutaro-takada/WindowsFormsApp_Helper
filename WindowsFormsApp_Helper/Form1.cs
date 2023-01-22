@@ -109,7 +109,7 @@ namespace WindowsFormsApp_Helper
         {
             string tableName = string.IsNullOrEmpty(textBox3.Text) ? string.Empty : textBox3.Text;
             string updateItem1 = string.IsNullOrEmpty(textBox4.Text) ? string.Empty : string.Format("{0} = ,", textBox4.Text);
-            string updateItem2 = string.IsNullOrEmpty(textBox5.Text) ? string.Empty : string.Format("{0} = ,", textBox5.Text);
+            string updateItem2 = string.IsNullOrEmpty(textBox5.Text) ? string.Empty : string.Format("{0} = ", textBox5.Text);
             string where = string.IsNullOrEmpty(textBox6.Text) ? string.Empty : string.Format("{0} = ", textBox6.Text);
 
             List<string> sql = new List<string>
