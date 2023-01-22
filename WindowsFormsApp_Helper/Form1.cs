@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -60,12 +61,12 @@ namespace WindowsFormsApp_Helper
                     textBox2.Clear();
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-        
+
         /// <summary>
         /// 文字加工メソッド
         /// </summary>
@@ -102,11 +103,30 @@ namespace WindowsFormsApp_Helper
             Clipboard.SetText(dateTime);
         }
 
-       
+
 
         private void Button4_Click(object sender, EventArgs e)
         {
+            string tableName = string.IsNullOrEmpty(textBox3.Text) ? string.Empty : textBox3.Text;
+            string updateItem1 = string.IsNullOrEmpty(textBox4.Text) ? string.Empty : string.Format("{0} = ,", textBox4.Text);
+            string updateItem2 = string.IsNullOrEmpty(textBox5.Text) ? string.Empty : string.Format("{0} = ,", textBox5.Text);
+            string where = string.IsNullOrEmpty(textBox6.Text) ? string.Empty : string.Format("{0} = ", textBox6.Text);
 
+            List<string> sql = new List<string>
+            {
+                "BEGIN TRANSACTION",
+                "UPDATE "+tableName,
+                "SET",
+                updateItem1,
+                updateItem2,
+                "WHERE",
+                where,
+                "--ROLLBACK",
+                "--COMMIT"
+            };
+            string sqlstr = string.Join("\r\n", sql);
+            Clipboard.SetText(sqlstr);
+            MessageBox.Show(sqlstr,"コピー完了");
         }
     }
 }
