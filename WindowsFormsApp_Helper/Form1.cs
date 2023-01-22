@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlTypes;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp_Helper
@@ -103,8 +96,6 @@ namespace WindowsFormsApp_Helper
             Clipboard.SetText(dateTime);
         }
 
-
-
         private void Button4_Click(object sender, EventArgs e)
         {
             string tableName = string.IsNullOrEmpty(textBox3.Text) ? string.Empty : textBox3.Text;
@@ -128,5 +119,7 @@ namespace WindowsFormsApp_Helper
             Clipboard.SetText(sqlstr);
             MessageBox.Show(sqlstr,"コピー完了");
         }
+
+      
     }
 }
