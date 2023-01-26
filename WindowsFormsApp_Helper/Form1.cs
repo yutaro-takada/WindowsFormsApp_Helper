@@ -27,13 +27,18 @@ namespace WindowsFormsApp_Helper
                     Clipboard.SetText(addText);
                     MessageBox.Show(addText, "コピー完了");
                     textBox1.Clear();
+                    checkBox1.Checked = false;
+                }
+                else
+                {
+                    MessageBox.Show("入力値がありません。");
+                    checkBox1.Checked = false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         /// <summary>
@@ -52,6 +57,12 @@ namespace WindowsFormsApp_Helper
                     Clipboard.SetText(addText);
                     MessageBox.Show(addText, "コピー完了");
                     textBox2.Clear();
+                    checkBox2.Checked = false;
+                }
+                else 
+                {
+                    MessageBox.Show("入力値がありません。");
+                    checkBox2.Checked = false;
                 }
             }
             catch (Exception ex)
@@ -70,7 +81,14 @@ namespace WindowsFormsApp_Helper
             string[] array = new string[text.Length];
             if (text.Length == 1)
             {
-                array[0] = string.Format("'{0}'", text[0]);
+                if (checkBox1.Checked)
+                {
+                    array[0] = string.Format("('{0}')", text[0]);
+                }
+                else
+                {
+                    array[0] = string.Format("'{0}'", text[0]);
+                }
             }
             else
             {
@@ -78,11 +96,21 @@ namespace WindowsFormsApp_Helper
                 {
                     if (i == text.Length - 1)
                     {
-                        array[i] = string.Format("'{0}'", text[i]).ToString();
+                        if (checkBox2.Checked)
+                        {
+                            array[i] = string.Format("'{0}')", text[i]).ToString();
+                        }
                     }
                     else
                     {
-                        array[i] = string.Format("'{0}',", text[i]).ToString();
+                        if (i == 0)
+                        {
+                            array[i] = string.Format("('{0}',", text[i]).ToString();
+                        }
+                        else
+                        {
+                            array[i] = string.Format("'{0}',", text[i]).ToString();
+                        }
                     }
                 }
             }
@@ -120,6 +148,11 @@ namespace WindowsFormsApp_Helper
             MessageBox.Show(sqlstr,"コピー完了");
         }
 
-      
+     
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
