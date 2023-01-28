@@ -33,6 +33,7 @@ namespace WindowsFormsApp_Helper
                 {
                     MessageBox.Show("入力値がありません。");
                     checkBox1.Checked = false;
+
                 }
             }
             catch (Exception ex)
