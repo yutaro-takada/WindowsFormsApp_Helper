@@ -1,6 +1,11 @@
-﻿using System;
+﻿using ExpTreeLib;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+using static ExpTreeLib.ExpTree;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp_Helper
 {
@@ -10,6 +15,61 @@ namespace WindowsFormsApp_Helper
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e) 
+        {
+        }
+
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.expTree1.ExpTreeNodeSelected += new ExpTreeNodeSelectedEventHandler(this.ExpTree1_ExpTreeNodeSelected);
+
+            expTree1.ExpandANode(@"C:\Users");
+        }
+
+        /// <summary>
+        /// ツリービューのノードセレクト時処理
+        /// </summary>
+        /// <param name="SelPath"></param>
+        /// <param name="CSI"></param>
+        private void ExpTree1_ExpTreeNodeSelected(string SelPath, CShItem CSI)
+        {
+            listView1.View = View.Details;
+            listView1.Clear();
+            listView1.Columns.Add("名前");
+            listView1.Columns.Add("種類");
+
+            try
+            {
+                // フォルダをリストに追加
+                DirectoryInfo dirInfo = new DirectoryInfo(SelPath);
+
+                foreach (DirectoryInfo di in dirInfo.GetDirectories())
+                {
+                    ListViewItem item = new ListViewItem(di.Name);
+                    item.SubItems.Add("フォルダ");
+                    item.SubItems.Add("");
+                    listView1.Items.Add(item);
+                }
+
+                // ファイルをリスト追加
+                List<String> fileList = Directory.GetFiles(SelPath).ToList<String>();
+
+                foreach (String file in fileList)
+                {
+                    FileInfo fileInfo = new FileInfo(file);
+                    ListViewItem item = new ListViewItem(fileInfo.Name);
+                    item.SubItems.Add("ファイル");
+                    listView1.Items.Add(item);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+
 
         /// <summary>
         /// クリックイベント
@@ -147,13 +207,6 @@ namespace WindowsFormsApp_Helper
             string sqlstr = string.Join("\r\n", sql);
             Clipboard.SetText(sqlstr);
             MessageBox.Show(sqlstr,"コピー完了");
-        }
-
-     
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
