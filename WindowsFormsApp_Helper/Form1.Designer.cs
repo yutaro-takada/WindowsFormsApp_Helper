@@ -29,17 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("ノード1");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("ノード2");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("ノード0", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2});
-            this.button1 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -51,39 +48,34 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(145, 36);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 35);
-            this.button1.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.button1, "コピー");
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // textBox1
             // 
@@ -99,29 +91,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(126, 139);
             this.textBox2.TabIndex = 2;
-            // 
-            // button2
-            // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(145, 118);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(35, 31);
-            this.button2.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.button2, "コピー");
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(146, 273);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(34, 33);
-            this.button3.TabIndex = 4;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.button3, "コピー");
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // dateTimePicker1
             // 
@@ -212,18 +181,6 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "--COMMIT";
             // 
-            // button4
-            // 
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(95, 130);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(34, 33);
-            this.button4.TabIndex = 16;
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.button4, "コピー");
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -269,29 +226,8 @@
             this.tabControl1.Location = new System.Drawing.Point(219, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(622, 249);
+            this.tabControl1.Size = new System.Drawing.Size(765, 233);
             this.tabControl1.TabIndex = 21;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.textBox3);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.textBox4);
-            this.tabPage1.Controls.Add(this.button4);
-            this.tabPage1.Controls.Add(this.textBox5);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.textBox6);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(614, 223);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "UPDATE文";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -299,9 +235,9 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(614, 223);
+            this.tabPage2.Size = new System.Drawing.Size(757, 207);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "TreeView";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // splitContainer1
@@ -316,15 +252,20 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.button6);
+            this.splitContainer1.Panel2.Controls.Add(this.textBox10);
+            this.splitContainer1.Panel2.Controls.Add(this.button5);
             this.splitContainer1.Panel2.Controls.Add(this.textBox9);
             this.splitContainer1.Panel2.Controls.Add(this.textBox8);
             this.splitContainer1.Panel2.Controls.Add(this.textBox7);
-            this.splitContainer1.Size = new System.Drawing.Size(608, 217);
-            this.splitContainer1.SplitterDistance = 202;
+            this.splitContainer1.Size = new System.Drawing.Size(751, 201);
+            this.splitContainer1.SplitterDistance = 159;
             this.splitContainer1.TabIndex = 0;
             // 
             // treeView1
             // 
+            this.treeView1.BackColor = System.Drawing.SystemColors.Window;
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "";
@@ -335,30 +276,131 @@
             treeNode3.Text = "ノード0";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3});
-            this.treeView1.Size = new System.Drawing.Size(199, 214);
+            this.treeView1.Size = new System.Drawing.Size(156, 214);
             this.treeView1.TabIndex = 22;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(4, 9);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 19);
-            this.textBox7.TabIndex = 0;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(4, 34);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 19);
-            this.textBox8.TabIndex = 1;
-            // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(4, 59);
+            this.textBox9.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox9.Location = new System.Drawing.Point(59, 111);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 19);
             this.textBox9.TabIndex = 2;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox8.Location = new System.Drawing.Point(59, 59);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(478, 19);
+            this.textBox8.TabIndex = 1;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox7.Location = new System.Drawing.Point(59, 15);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(478, 19);
+            this.textBox7.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.textBox3);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.textBox4);
+            this.tabPage1.Controls.Add(this.textBox5);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.textBox6);
+            this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(757, 207);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "UPDATE文";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox10.Location = new System.Drawing.Point(59, 146);
+            this.textBox10.Multiline = true;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(478, 43);
+            this.textBox10.TabIndex = 4;
+            // 
+            // button6
+            // 
+            this.button6.Image = global::WindowsFormsApp_Helper.Properties.Resources.OpenWebSite;
+            this.button6.Location = new System.Drawing.Point(12, 48);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(36, 36);
+            this.button6.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.button6, "WEBサイトを開く");
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Image = global::WindowsFormsApp_Helper.Properties.Resources.FolderOpened;
+            this.button5.Location = new System.Drawing.Point(12, 7);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(36, 36);
+            this.button5.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.button5, "フォルダを開く");
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.Location = new System.Drawing.Point(95, 130);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(34, 33);
+            this.button4.TabIndex = 16;
+            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.button4, "コピー");
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Image = global::WindowsFormsApp_Helper.Properties.Resources.copy;
+            this.button3.Location = new System.Drawing.Point(146, 273);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(36, 36);
+            this.button3.TabIndex = 4;
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.button3, "コピー");
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Image = global::WindowsFormsApp_Helper.Properties.Resources.copy;
+            this.button2.Location = new System.Drawing.Point(145, 118);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(36, 36);
+            this.button2.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.button2, "コピー");
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Image = global::WindowsFormsApp_Helper.Properties.Resources.copy;
+            this.button1.Location = new System.Drawing.Point(145, 36);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(36, 36);
+            this.button1.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.button1, "コピー");
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // Form1
             // 
@@ -379,14 +421,14 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -424,6 +466,9 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Button button6;
     }
 }
 

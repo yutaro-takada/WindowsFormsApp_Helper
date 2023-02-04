@@ -1,8 +1,10 @@
 ﻿using ExpTreeLib;
+using ExpTreeLib.ShellDll;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Windows.Forms;
 using static ExpTreeLib.ExpTree;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -186,12 +188,44 @@ namespace WindowsFormsApp_Helper
         #region 画面右側の機能
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (treeView1.SelectedNode.Text == "ノード1") 
+            if (treeView1.SelectedNode.Text == "ノード1")
             {
-                textBox7.Text = "おはよう";
+                textBox8.Text = "おはよう";
             }
-
+            else 
+            {
+                textBox8.Text = string.Empty;
+            }
         }
         #endregion
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string inputPath = textBox7.Text;
+                System.Diagnostics.Process.Start(inputPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(textBox8.Text))
+                {
+                    string url = textBox8.Text;
+                    System.Diagnostics.Process.Start($"{url}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
     }
 }
