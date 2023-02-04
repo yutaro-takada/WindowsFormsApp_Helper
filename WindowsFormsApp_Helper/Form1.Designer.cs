@@ -61,9 +61,10 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.expTree1 = new ExpTreeLib.ExpTree();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -96,7 +97,7 @@
             this.textBox2.Location = new System.Drawing.Point(11, 118);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(126, 109);
+            this.textBox2.Size = new System.Drawing.Size(126, 139);
             this.textBox2.TabIndex = 2;
             // 
             // button2
@@ -113,7 +114,7 @@
             // button3
             // 
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(145, 228);
+            this.button3.Location = new System.Drawing.Point(146, 273);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(34, 33);
             this.button3.TabIndex = 4;
@@ -124,7 +125,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(11, 233);
+            this.dateTimePicker1.Location = new System.Drawing.Point(10, 278);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(127, 19);
             this.dateTimePicker1.TabIndex = 5;
@@ -263,14 +264,13 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(219, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(622, 249);
             this.tabControl1.TabIndex = 21;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -288,7 +288,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(641, 332);
+            this.tabPage1.Size = new System.Drawing.Size(614, 223);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "UPDATE文";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -312,40 +312,22 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.expTree1);
+            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.listView1);
+            this.splitContainer1.Panel2.Controls.Add(this.textBox9);
+            this.splitContainer1.Panel2.Controls.Add(this.textBox8);
+            this.splitContainer1.Panel2.Controls.Add(this.textBox7);
             this.splitContainer1.Size = new System.Drawing.Size(608, 217);
             this.splitContainer1.SplitterDistance = 202;
             this.splitContainer1.TabIndex = 0;
             // 
-            // expTree1
-            // 
-            this.expTree1.AllowFolderRename = false;
-            this.expTree1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.expTree1.Location = new System.Drawing.Point(3, 3);
-            this.expTree1.Name = "expTree1";
-            this.expTree1.ShowRootLines = false;
-            this.expTree1.Size = new System.Drawing.Size(205, 320);
-            this.expTree1.StartUpDirectory = ExpTreeLib.ExpTree.StartDir.Desktop;
-            this.expTree1.TabIndex = 0;
-            // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(3, 3);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(414, 323);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(219, 305);
+            this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "ノード1";
+            treeNode1.Name = "";
             treeNode1.Text = "ノード1";
             treeNode2.Name = "ノード2";
             treeNode2.Text = "ノード2";
@@ -353,15 +335,36 @@
             treeNode3.Text = "ノード0";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3});
-            this.treeView1.Size = new System.Drawing.Size(215, 257);
+            this.treeView1.Size = new System.Drawing.Size(199, 214);
             this.treeView1.TabIndex = 22;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(4, 9);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 19);
+            this.textBox7.TabIndex = 0;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(4, 34);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(100, 19);
+            this.textBox8.TabIndex = 1;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(4, 59);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 19);
+            this.textBox9.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(996, 591);
-            this.Controls.Add(this.treeView1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
@@ -381,6 +384,7 @@
             this.tabPage2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -415,10 +419,11 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private ExpTreeLib.ExpTree expTree1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }
 

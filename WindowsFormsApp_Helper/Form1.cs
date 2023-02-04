@@ -18,61 +18,12 @@ namespace WindowsFormsApp_Helper
 
         private void Form1_Load(object sender, EventArgs e) 
         {
+
         }
 
-        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.expTree1.ExpTreeNodeSelected += new ExpTreeNodeSelectedEventHandler(this.ExpTree1_ExpTreeNodeSelected);
-
-            expTree1.ExpandANode(@"C:\Users");
-        }
-
+        #region 画面左側の機能
         /// <summary>
-        /// ツリービューのノードセレクト時処理
-        /// </summary>
-        /// <param name="SelPath"></param>
-        /// <param name="CSI"></param>
-        private void ExpTree1_ExpTreeNodeSelected(string SelPath, CShItem CSI)
-        {
-            listView1.View = View.Details;
-            listView1.Clear();
-            listView1.Columns.Add("名前");
-            listView1.Columns.Add("種類");
-
-            try
-            {
-                // フォルダをリストに追加
-                DirectoryInfo dirInfo = new DirectoryInfo(SelPath);
-
-                foreach (DirectoryInfo di in dirInfo.GetDirectories())
-                {
-                    ListViewItem item = new ListViewItem(di.Name);
-                    item.SubItems.Add("フォルダ");
-                    item.SubItems.Add("");
-                    listView1.Items.Add(item);
-                }
-
-                // ファイルをリスト追加
-                List<String> fileList = Directory.GetFiles(SelPath).ToList<String>();
-
-                foreach (String file in fileList)
-                {
-                    FileInfo fileInfo = new FileInfo(file);
-                    ListViewItem item = new ListViewItem(fileInfo.Name);
-                    item.SubItems.Add("ファイル");
-                    listView1.Items.Add(item);
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-        }
-
-
-
-        /// <summary>
-        /// クリックイベント
+        /// [単一行加工]コピーボタンのクリックイベント
         /// </summary>
         /// <param name="sender">送信元</param>
         /// <param name="e">イベント</param>
@@ -103,7 +54,7 @@ namespace WindowsFormsApp_Helper
         }
 
         /// <summary>
-        /// クリックイベント
+        /// [複数行加工]コピーボタンのクリックイベント
         /// </summary>
         /// <param name="sender">送信元</param>
         /// <param name="e">イベント</param>
@@ -116,7 +67,7 @@ namespace WindowsFormsApp_Helper
                     string[] textList = textBox2.Text.Split(new[] { "\r\n" }, StringSplitOptions.None);
                     string addText = ChangeText(textList);
                     Clipboard.SetText(addText);
-                    MessageBox.Show(addText, "コピー完了");
+                    MessageBox.Show("コピーしました。", "コピー完了");
                     textBox2.Clear();
                     checkBox2.Checked = false;
                 }
@@ -161,12 +112,23 @@ namespace WindowsFormsApp_Helper
                         {
                             array[i] = string.Format("'{0}')", text[i]).ToString();
                         }
+                        else 
+                        {
+                            array[i] = string.Format("'{0}'", text[i]).ToString();
+                        }
                     }
                     else
                     {
-                        if (i == 0)
+                        if (checkBox2.Checked)
                         {
-                            array[i] = string.Format("('{0}',", text[i]).ToString();
+                            if (i == 0)
+                            {
+                                array[i] = string.Format("('{0}',", text[i]).ToString();
+                            }
+                            else
+                            {
+                                array[i] = string.Format("'{0}',", text[i]).ToString();
+                            }
                         }
                         else
                         {
@@ -178,6 +140,11 @@ namespace WindowsFormsApp_Helper
             return string.Join("\r\n", array);
         }
 
+        /// <summary>
+        /// [日付]コピーボタンのクリックイベント
+        /// </summary>
+        /// <param name="sender">送信元</param>
+        /// <param name="e">イベント</param>
         private void Button3_Click(object sender, EventArgs e)
         {
             string dateTime = DateTime.Now.ToString("yyyy-MM-dd");
@@ -185,6 +152,11 @@ namespace WindowsFormsApp_Helper
             Clipboard.SetText(dateTime);
         }
 
+        /// <summary>
+        /// [SQL_UPDATE]コピーボタンのクリックイベント
+        /// </summary>
+        /// <param name="sender">送信元</param>
+        /// <param name="e">イベント</param>
         private void Button4_Click(object sender, EventArgs e)
         {
             string tableName = string.IsNullOrEmpty(textBox3.Text) ? string.Empty : textBox3.Text;
@@ -208,5 +180,18 @@ namespace WindowsFormsApp_Helper
             Clipboard.SetText(sqlstr);
             MessageBox.Show(sqlstr,"コピー完了");
         }
+
+        #endregion
+
+        #region 画面右側の機能
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (treeView1.SelectedNode.Text == "ノード1") 
+            {
+                textBox7.Text = "おはよう";
+            }
+
+        }
+        #endregion
     }
 }
