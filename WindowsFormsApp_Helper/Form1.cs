@@ -1,13 +1,8 @@
-﻿using ExpTreeLib;
-using ExpTreeLib.ShellDll;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Policy;
 using System.Windows.Forms;
-using static ExpTreeLib.ExpTree;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp_Helper
 {
@@ -16,10 +11,15 @@ namespace WindowsFormsApp_Helper
         public Form1()
         {
             InitializeComponent();
+            Form1_Load(null,null);
         }
 
         private void Form1_Load(object sender, EventArgs e) 
         {
+            Console.WriteLine("おはよう");
+            StreamReader sr = new StreamReader(@"C:\dev\SaveReport\data.txt");
+            string text = sr.ReadToEnd();
+            sr.Close();
 
         }
 
@@ -186,11 +186,16 @@ namespace WindowsFormsApp_Helper
         #endregion
 
         #region 画面右側の機能
+        /// <summary>
+        /// [ツリービュー]操作時のイベント
+        /// </summary>
+        /// <param name="sender">送信元</param>
+        /// <param name="e">イベント</param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (treeView1.SelectedNode.Text == "ノード1")
             {
-                textBox8.Text = "おはよう";
+                textBox8.Text = string.Empty;
             }
             else 
             {
@@ -199,7 +204,12 @@ namespace WindowsFormsApp_Helper
         }
         #endregion
 
-        private void button5_Click(object sender, EventArgs e)
+        /// <summary>
+        /// [フォルダを開く]ボタンのクリックイベント
+        /// </summary>
+        /// <param name="sender">送信元</param>
+        /// <param name="e">イベント</param>
+        private void Button5_Click(object sender, EventArgs e)
         {
             try
             {
@@ -212,7 +222,12 @@ namespace WindowsFormsApp_Helper
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        /// <summary>
+        /// [WEBサイトを開く]ボタンのクリックイベント
+        /// </summary>
+        /// <param name="sender">送信元</param>
+        /// <param name="e">イベント</param>
+        private void Button6_Click(object sender, EventArgs e)
         {
             try
             {
@@ -226,6 +241,34 @@ namespace WindowsFormsApp_Helper
             {
                 MessageBox.Show(ex.Message, "Error");
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("おやすみ");
+
+            if (!Directory.Exists(@"C:\dev\SaveReport")) 
+            {
+                Directory.CreateDirectory(@"C:\dev\SaveReport\");
+            }
+
+            StreamWriter sw = new StreamWriter(@"C:\dev\SaveReport\data.txt");
+            Note note = new Note
+            {
+                text1 = textBox7.Text,
+                text2 = textBox8.Text
+            };
+
+            string json = JsonConvert.SerializeObject(note);
+            sw.WriteLine(json);
+            sw.Close();
+            MessageBox.Show("保存しました。");
+        }
+
+        class Note 
+        {
+            public string text1 { get; set; }
+            public string text2 { get; set; }
         }
     }
 }
