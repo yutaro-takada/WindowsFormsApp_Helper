@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp_Helper
 {
@@ -11,16 +12,17 @@ namespace WindowsFormsApp_Helper
         public Form1()
         {
             InitializeComponent();
-            Form1_Load(null,null);
         }
 
-        private void Form1_Load(object sender, EventArgs e) 
+        /// <summary>
+        /// 初回表示時のイベント
+        /// </summary>
+        /// <param name="sender">送信元</param>
+        /// <param name="e">イベント</param>
+        /// <remarks>Form1初回表示時のイベント</remarks>
+        private void Form1_Shown(object sender , EventArgs e) 
         {
-            Console.WriteLine("おはよう");
-            StreamReader sr = new StreamReader(@"C:\dev\SaveReport\data.txt");
-            string text = sr.ReadToEnd();
-            sr.Close();
-
+            TreeView1_BeforeSelected();
         }
 
         #region 画面左側の機能
@@ -185,13 +187,46 @@ namespace WindowsFormsApp_Helper
 
         #endregion
 
+        /// <summary>
+        /// [treeview]表示前のイベント
+        /// </summary>
+        /// <remarks>TreeView表示前にデータを読み込む</remarks>
+        private void TreeView1_BeforeSelected()
+        {
+            Note note = null;
+            try
+            {
+                using (StreamReader sr = new StreamReader(@"C:\dev\SaveReport\data.txt"))
+                {
+                    //var str = sr.ReadLine();
+                    JsonSerializer serializer = new JsonSerializer();
+                    //List<Note> notes = new List<Note>();
+                    note = (Note)serializer.Deserialize(sr, typeof(Note));
+
+                }
+
+                treeView1.SelectedNode = treeView1.Nodes[0].Nodes[0];
+                treeView1.Focus();
+
+                treeView1.SelectedNode.Text = note.Name;
+                textBox7.Text = note.text1;
+                textBox8.Text = note.text2;
+
+                //treeView1.Nodes[0].Expand();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         #region 画面右側の機能
         /// <summary>
-        /// [ツリービュー]操作時のイベント
+        /// [ツリービュー]選択時のイベント
         /// </summary>
         /// <param name="sender">送信元</param>
         /// <param name="e">イベント</param>
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (treeView1.SelectedNode.Text == "ノード1")
             {
@@ -245,28 +280,29 @@ namespace WindowsFormsApp_Helper
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("おやすみ");
-
             if (!Directory.Exists(@"C:\dev\SaveReport")) 
             {
                 Directory.CreateDirectory(@"C:\dev\SaveReport\");
             }
 
-            StreamWriter sw = new StreamWriter(@"C:\dev\SaveReport\data.txt");
-            Note note = new Note
+            using (StreamWriter sw = new StreamWriter(@"C:\dev\SaveReport\data.txt"))
             {
-                text1 = textBox7.Text,
-                text2 = textBox8.Text
-            };
+                Note note = new Note
+                {
+                    Name = treeView1.SelectedNode.Text,
+                    text1 = textBox7.Text,
+                    text2 = textBox8.Text
+                };
 
-            string json = JsonConvert.SerializeObject(note);
-            sw.WriteLine(json);
-            sw.Close();
+                string json = JsonConvert.SerializeObject(note);
+                sw.WriteLine(json);
+            }
             MessageBox.Show("保存しました。");
         }
 
         class Note 
         {
+            public string Name { get; set; }
             public string text1 { get; set; }
             public string text2 { get; set; }
         }

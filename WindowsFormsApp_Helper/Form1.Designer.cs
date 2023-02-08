@@ -30,11 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("ノード1");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("ノード2");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("ノード0", new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode8});
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("ノード1");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("ノード2");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("ノード0", new System.Windows.Forms.TreeNode[] {
+            treeNode15,
+            treeNode16});
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("ノード1");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("ノード2");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("ノード3");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("ノード0", new System.Windows.Forms.TreeNode[] {
+            treeNode18,
+            treeNode19,
+            treeNode20});
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -63,12 +70,12 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.button7 = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -338,17 +345,36 @@
             this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode7.Name = "";
-            treeNode7.Text = "ノード1";
-            treeNode8.Name = "ノード2";
-            treeNode8.Text = "ノード2";
-            treeNode9.Name = "ノード0";
-            treeNode9.Text = "ノード0";
+            treeNode15.Name = "";
+            treeNode15.Text = "ノード1";
+            treeNode16.Name = "ノード2";
+            treeNode16.Text = "ノード2";
+            treeNode17.Name = "ノード0";
+            treeNode17.Text = "ノード0";
+            treeNode18.Name = "ノード1";
+            treeNode18.Text = "ノード1";
+            treeNode19.Name = "ノード2";
+            treeNode19.Text = "ノード2";
+            treeNode20.Name = "ノード3";
+            treeNode20.Text = "ノード3";
+            treeNode21.Name = "ノード0";
+            treeNode21.Text = "ノード0";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9});
+            treeNode17,
+            treeNode21});
             this.treeView1.Size = new System.Drawing.Size(156, 214);
             this.treeView1.TabIndex = 22;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterSelect);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(462, 172);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 6;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // textBox10
             // 
@@ -405,16 +431,6 @@
             this.tabPage1.Text = "UPDATE文";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(462, 172);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -433,6 +449,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
