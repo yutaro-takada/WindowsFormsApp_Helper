@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -193,24 +194,26 @@ namespace WindowsFormsApp_Helper
         /// <remarks>TreeView表示前にデータを読み込む</remarks>
         private void TreeView1_BeforeSelected()
         {
-            Note note = null;
+            List<Note> notes = new List<Note>();
             try
             {
                 using (StreamReader sr = new StreamReader(@"C:\dev\SaveReport\data.txt"))
                 {
-                    //var str = sr.ReadLine();
-                    JsonSerializer serializer = new JsonSerializer();
-                    //List<Note> notes = new List<Note>();
-                    note = (Note)serializer.Deserialize(sr, typeof(Note));
-
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        //MessageBox.Show(line);
+                        notes.Add(JsonConvert.DeserializeObject<Note>(line));
+                    }
                 }
 
                 treeView1.SelectedNode = treeView1.Nodes[0].Nodes[0];
                 treeView1.Focus();
 
-                treeView1.SelectedNode.Text = note.Name;
-                textBox7.Text = note.text1;
-                textBox8.Text = note.text2;
+                treeView1.Nodes[0].Text = notes[0].Title;
+                treeView1.SelectedNode.Text = notes[0].Name;
+                textBox7.Text = notes[0].text1;
+                textBox8.Text = notes[0].text2;
 
                 //treeView1.Nodes[0].Expand();
             }
@@ -278,7 +281,7 @@ namespace WindowsFormsApp_Helper
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void Button7_Click(object sender, EventArgs e)
         {
             if (!Directory.Exists(@"C:\dev\SaveReport")) 
             {
@@ -289,6 +292,7 @@ namespace WindowsFormsApp_Helper
             {
                 Note note = new Note
                 {
+                    Title = treeView1.Nodes[0].Text,
                     Name = treeView1.SelectedNode.Text,
                     text1 = textBox7.Text,
                     text2 = textBox8.Text
@@ -302,6 +306,7 @@ namespace WindowsFormsApp_Helper
 
         class Note 
         {
+            public string Title { get; set; }
             public string Name { get; set; }
             public string text1 { get; set; }
             public string text2 { get; set; }
