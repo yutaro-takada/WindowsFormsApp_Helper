@@ -202,20 +202,36 @@ namespace WindowsFormsApp_Helper
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        //MessageBox.Show(line);
                         notes.Add(JsonConvert.DeserializeObject<Note>(line));
                     }
+
+                    List<TreeNode> treeNodesList = new List<TreeNode>();
+                    for (int i = 0; i < notes.Count; i++)
+                    {
+                        List<TreeNode> treeNodesChild = new List<TreeNode>();
+                        TreeNode child1 = new TreeNode(notes[i].Name);
+                        treeNodesChild.Add(child1);
+                        TreeNode[] children = treeNodesChild.ToArray();
+                        TreeNode treeNodeGroup = new TreeNode(notes[i].Title, children);
+                        treeNodesList.Add(treeNodeGroup);
+                    }
+
+                    TreeNode[] treeNodeRoot = treeNodesList.ToArray();
+                    treeView1.Nodes.AddRange(treeNodeRoot);
+
+                    // 先頭のノードを展開する
+                    treeView1.TopNode.Expand();
+
+                    treeView1.SelectedNode = treeView1.Nodes[0].Nodes[0];
+                    treeView1.Focus();
+
+                    //treeView1.Nodes[0].Text = notes[0].Title;
+                    //treeView1.SelectedNode.Text = notes[0].Name;
+                    //treeView1.Nodes[0].Nodes[1].Text = notes[1].Name;
+                    textBox7.Text = notes[0].text1;
+                    textBox8.Text = notes[0].text2;
+                    textBox9.Text = notes[0].text3;
                 }
-
-                treeView1.SelectedNode = treeView1.Nodes[0].Nodes[0];
-                treeView1.Focus();
-
-                treeView1.Nodes[0].Text = notes[0].Title;
-                treeView1.SelectedNode.Text = notes[0].Name;
-                textBox7.Text = notes[0].text1;
-                textBox8.Text = notes[0].text2;
-
-                //treeView1.Nodes[0].Expand();
             }
             catch (Exception ex) 
             {
@@ -233,11 +249,11 @@ namespace WindowsFormsApp_Helper
         {
             if (treeView1.SelectedNode.Text == "ノード1")
             {
-                textBox8.Text = string.Empty;
+                
             }
             else 
             {
-                textBox8.Text = string.Empty;
+                
             }
         }
         #endregion
@@ -295,7 +311,8 @@ namespace WindowsFormsApp_Helper
                     Title = treeView1.Nodes[0].Text,
                     Name = treeView1.SelectedNode.Text,
                     text1 = textBox7.Text,
-                    text2 = textBox8.Text
+                    text2 = textBox8.Text,
+                    text3 = textBox9.Text
                 };
 
                 string json = JsonConvert.SerializeObject(note);
@@ -310,6 +327,7 @@ namespace WindowsFormsApp_Helper
             public string Name { get; set; }
             public string text1 { get; set; }
             public string text2 { get; set; }
+            public string text3 { get; set; }
         }
     }
 }
