@@ -60,9 +60,9 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.button7 = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.freeTextBox = new System.Windows.Forms.TextBox();
+            this.UrlTextBox = new System.Windows.Forms.TextBox();
+            this.folderPathTextBox = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -325,9 +325,9 @@
             this.splitContainer1.Panel2.Controls.Add(this.button6);
             this.splitContainer1.Panel2.Controls.Add(this.textBox10);
             this.splitContainer1.Panel2.Controls.Add(this.button5);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox9);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox8);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox7);
+            this.splitContainer1.Panel2.Controls.Add(this.freeTextBox);
+            this.splitContainer1.Panel2.Controls.Add(this.UrlTextBox);
+            this.splitContainer1.Panel2.Controls.Add(this.folderPathTextBox);
             this.splitContainer1.Size = new System.Drawing.Size(751, 253);
             this.splitContainer1.SplitterDistance = 159;
             this.splitContainer1.TabIndex = 0;
@@ -362,29 +362,29 @@
             this.textBox10.TabIndex = 4;
             this.textBox10.Visible = false;
             // 
-            // textBox9
+            // freeTextBox
             // 
-            this.textBox9.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox9.Location = new System.Drawing.Point(59, 90);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 19);
-            this.textBox9.TabIndex = 2;
+            this.freeTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.freeTextBox.Location = new System.Drawing.Point(59, 90);
+            this.freeTextBox.Name = "freeTextBox";
+            this.freeTextBox.Size = new System.Drawing.Size(100, 19);
+            this.freeTextBox.TabIndex = 2;
             // 
-            // textBox8
+            // UrlTextBox
             // 
-            this.textBox8.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox8.Location = new System.Drawing.Point(59, 59);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(478, 19);
-            this.textBox8.TabIndex = 1;
+            this.UrlTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.UrlTextBox.Location = new System.Drawing.Point(59, 59);
+            this.UrlTextBox.Name = "UrlTextBox";
+            this.UrlTextBox.Size = new System.Drawing.Size(478, 19);
+            this.UrlTextBox.TabIndex = 1;
             // 
-            // textBox7
+            // folderPathTextBox
             // 
-            this.textBox7.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox7.Location = new System.Drawing.Point(59, 15);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(478, 19);
-            this.textBox7.TabIndex = 0;
+            this.folderPathTextBox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.folderPathTextBox.Location = new System.Drawing.Point(59, 15);
+            this.folderPathTextBox.Name = "folderPathTextBox";
+            this.folderPathTextBox.Size = new System.Drawing.Size(478, 19);
+            this.folderPathTextBox.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -490,9 +490,9 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox freeTextBox;
+        private System.Windows.Forms.TextBox UrlTextBox;
+        private System.Windows.Forms.TextBox folderPathTextBox;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Button button6;

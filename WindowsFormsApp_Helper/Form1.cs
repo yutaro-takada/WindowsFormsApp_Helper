@@ -209,9 +209,12 @@ namespace WindowsFormsApp_Helper
                     for (int i = 0; i < notes.Count; i++)
                     {
                         List<TreeNode> treeNodesChild = new List<TreeNode>();
-                        TreeNode child1 = new TreeNode(notes[i].Name);
-                        treeNodesChild.Add(child1);
+                        treeNodesChild.Add(new TreeNode(notes[i].Name));
+
+                        
                         TreeNode[] children = treeNodesChild.ToArray();
+
+
                         TreeNode treeNodeGroup = new TreeNode(notes[i].Title, children);
                         treeNodesList.Add(treeNodeGroup);
                     }
@@ -228,9 +231,9 @@ namespace WindowsFormsApp_Helper
                     //treeView1.Nodes[0].Text = notes[0].Title;
                     //treeView1.SelectedNode.Text = notes[0].Name;
                     //treeView1.Nodes[0].Nodes[1].Text = notes[1].Name;
-                    textBox7.Text = notes[0].text1;
-                    textBox8.Text = notes[0].text2;
-                    textBox9.Text = notes[0].text3;
+                    folderPathTextBox.Text = notes[0].Folder;
+                    UrlTextBox.Text = notes[0].Url;
+                    freeTextBox.Text = notes[0].Text;
                 }
             }
             catch (Exception ex) 
@@ -267,7 +270,7 @@ namespace WindowsFormsApp_Helper
         {
             try
             {
-                string inputPath = textBox7.Text;
+                string inputPath = folderPathTextBox.Text;
                 System.Diagnostics.Process.Start(inputPath);
             }
             catch (Exception ex)
@@ -285,9 +288,9 @@ namespace WindowsFormsApp_Helper
         {
             try
             {
-                if (!string.IsNullOrEmpty(textBox8.Text))
+                if (!string.IsNullOrEmpty(UrlTextBox.Text))
                 {
-                    string url = textBox8.Text;
+                    string url = UrlTextBox.Text;
                     System.Diagnostics.Process.Start($"{url}");
                 }
             }
@@ -310,9 +313,9 @@ namespace WindowsFormsApp_Helper
                 {
                     Title = treeView1.Nodes[0].Text,
                     Name = treeView1.SelectedNode.Text,
-                    text1 = textBox7.Text,
-                    text2 = textBox8.Text,
-                    text3 = textBox9.Text
+                    Folder = folderPathTextBox.Text,
+                    Url = UrlTextBox.Text,
+                    Text = freeTextBox.Text
                 };
 
                 string json = JsonConvert.SerializeObject(note);
@@ -325,9 +328,9 @@ namespace WindowsFormsApp_Helper
         {
             public string Title { get; set; }
             public string Name { get; set; }
-            public string text1 { get; set; }
-            public string text2 { get; set; }
-            public string text3 { get; set; }
+            public string Folder { get; set; }
+            public string Url { get; set; }
+            public string Text { get; set; }
         }
     }
 }
