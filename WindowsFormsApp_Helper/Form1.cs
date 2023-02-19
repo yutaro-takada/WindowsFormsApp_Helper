@@ -208,13 +208,12 @@ namespace WindowsFormsApp_Helper
                     List<TreeNode> treeNodesList = new List<TreeNode>();
                     for (int i = 0; i < notes.Count; i++)
                     {
-                        List<TreeNode> treeNodesChild = new List<TreeNode>();
-                        treeNodesChild.Add(new TreeNode(notes[i].Name));
+                        List<TreeNode> treeNodesChild = new List<TreeNode>
+                        {
+                            new TreeNode(notes[i].Name)
+                        };
 
-                        
                         TreeNode[] children = treeNodesChild.ToArray();
-
-
                         TreeNode treeNodeGroup = new TreeNode(notes[i].Title, children);
                         treeNodesList.Add(treeNodeGroup);
                     }
@@ -224,13 +223,8 @@ namespace WindowsFormsApp_Helper
 
                     // 先頭のノードを展開する
                     treeView1.TopNode.Expand();
-
                     treeView1.SelectedNode = treeView1.Nodes[0].Nodes[0];
                     treeView1.Focus();
-
-                    //treeView1.Nodes[0].Text = notes[0].Title;
-                    //treeView1.SelectedNode.Text = notes[0].Name;
-                    //treeView1.Nodes[0].Nodes[1].Text = notes[1].Name;
                     folderPathTextBox.Text = notes[0].Folder;
                     UrlTextBox.Text = notes[0].Url;
                     freeTextBox.Text = notes[0].Text;
