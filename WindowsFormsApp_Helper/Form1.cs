@@ -27,43 +27,13 @@ namespace WindowsFormsApp_Helper
         }
 
         #region 画面左側の機能
-        /// <summary>
-        /// [単一行加工]コピーボタンのクリックイベント
-        /// </summary>
-        /// <param name="sender">送信元</param>
-        /// <param name="e">イベント</param>
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(textBox1.Text))
-                {
-                    string[] textList = textBox1.Text.Split(new[] { "\r\n" }, StringSplitOptions.None);
-                    string addText = ChangeText(textList);
-                    Clipboard.SetText(addText);
-                    MessageBox.Show(addText, "コピー完了");
-                    textBox1.Clear();
-                    checkBox1.Checked = false;
-                }
-                else
-                {
-                    MessageBox.Show("入力値がありません。");
-                    checkBox1.Checked = false;
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         /// <summary>
         /// [複数行加工]コピーボタンのクリックイベント
         /// </summary>
         /// <param name="sender">送信元</param>
         /// <param name="e">イベント</param>
-        private void Button2_Click(object sender, EventArgs e)
+        private void multileLineCopyButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -74,12 +44,12 @@ namespace WindowsFormsApp_Helper
                     Clipboard.SetText(addText);
                     MessageBox.Show("コピーしました。", "コピー完了");
                     textBox2.Clear();
-                    checkBox2.Checked = false;
+                    surroundMultipleLineCheckBox.Checked = false;
                 }
                 else 
                 {
                     MessageBox.Show("入力値がありません。");
-                    checkBox2.Checked = false;
+                    surroundMultipleLineCheckBox.Checked = false;
                 }
             }
             catch (Exception ex)
@@ -92,13 +62,14 @@ namespace WindowsFormsApp_Helper
         /// 文字加工メソッド
         /// </summary>
         /// <param name="text">入力内容</param>
-        /// <returns>文字列(入力内容をシングルコートで囲む)</returns>
+        /// <returns>文字列</returns>
         private string ChangeText(string[] text)
         {
             string[] array = new string[text.Length];
+            /*単一行*/
             if (text.Length == 1)
             {
-                if (checkBox1.Checked)
+                if (surroundMultipleLineCheckBox.Checked)
                 {
                     array[0] = string.Format("('{0}')", text[0]);
                 }
@@ -107,13 +78,14 @@ namespace WindowsFormsApp_Helper
                     array[0] = string.Format("'{0}'", text[0]);
                 }
             }
+            /*複数行*/
             else
             {
                 for (int i = 0; i < text.Length; i++)
                 {
                     if (i == text.Length - 1)
                     {
-                        if (checkBox2.Checked)
+                        if (surroundMultipleLineCheckBox.Checked)
                         {
                             array[i] = string.Format("'{0}')", text[i]).ToString();
                         }
@@ -124,7 +96,7 @@ namespace WindowsFormsApp_Helper
                     }
                     else
                     {
-                        if (checkBox2.Checked)
+                        if (surroundMultipleLineCheckBox.Checked)
                         {
                             if (i == 0)
                             {
@@ -142,7 +114,21 @@ namespace WindowsFormsApp_Helper
                     }
                 }
             }
-            return string.Join("\r\n", array);
+            /*【シングルクォーテーション】の除去*/
+            if (exclusionSingleQuoteCheckBox.Checked)
+            {
+                string[] exSingleQuote = new string[array.Length];
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    exSingleQuote[i] = array[i].Replace("'", "");
+                }
+                return string.Join("\r\n", exSingleQuote);
+            }
+            else
+            {
+                return string.Join("\r\n", array);
+            }
         }
 
         /// <summary>
@@ -150,7 +136,7 @@ namespace WindowsFormsApp_Helper
         /// </summary>
         /// <param name="sender">送信元</param>
         /// <param name="e">イベント</param>
-        private void Button3_Click(object sender, EventArgs e)
+        private void dateCopyButton_Click(object sender, EventArgs e)
         {
             string dateTime = DateTime.Now.ToString("yyyy-MM-dd");
             MessageBox.Show(dateTime);
@@ -208,13 +194,30 @@ namespace WindowsFormsApp_Helper
                     List<TreeNode> treeNodesList = new List<TreeNode>();
                     for (int i = 0; i < notes.Count; i++)
                     {
+                        
+
                         List<TreeNode> treeNodesChild = new List<TreeNode>
                         {
                             new TreeNode(notes[i].Name)
                         };
 
+                        //if (i > 0)
+                        //{
+                        //    var lastTitle = notes[i - 1].Title;
+                        //    if (lastTitle == notes[i].Title)
+                        //    {
+                        //        treeNodesChild[i].Nodes.Add(notes[i].Name);
+                        //    }
+
+                        //}
+
+
+
                         TreeNode[] children = treeNodesChild.ToArray();
+                       
+
                         TreeNode treeNodeGroup = new TreeNode(notes[i].Title, children);
+                        
                         treeNodesList.Add(treeNodeGroup);
                     }
 
@@ -244,14 +247,34 @@ namespace WindowsFormsApp_Helper
         /// <param name="e">イベント</param>
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (treeView1.SelectedNode.Text == "ノード1")
+            
+                string selectedName = treeView1.SelectedNode.Text;
+                GetInfo(selectedName);
+            
+        }
+
+        private void GetInfo(string name)
+        {
+            List<Note> notes = new List<Note>();
+            try
             {
-                
+                using (StreamReader sr = new StreamReader(@"C:\dev\SaveReport\data.txt"))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        notes.Add(JsonConvert.DeserializeObject<Note>(line));
+                    }
+                }
+
+                var a = notes.FindAll(x => x.Title == name);
+                var num = notes.FindAll(x => x.Title == name);
             }
-            else 
+            catch (Exception ex)
             {
-                
+                MessageBox.Show(ex.Message);
             }
+
         }
         #endregion
 
@@ -325,6 +348,11 @@ namespace WindowsFormsApp_Helper
             public string Folder { get; set; }
             public string Url { get; set; }
             public string Text { get; set; }
+        }
+
+        private void singleLineCopyButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

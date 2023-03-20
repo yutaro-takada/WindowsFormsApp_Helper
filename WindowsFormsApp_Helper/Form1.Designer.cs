@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -47,13 +46,10 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.dateCopyButton = new System.Windows.Forms.Button();
+            this.multipleLineCopyButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.surroundMultipleLineCheckBox = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -66,6 +62,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.exclusionSingleQuoteCheckBox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -77,24 +74,17 @@
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(13, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(127, 19);
-            this.textBox1.TabIndex = 1;
-            // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(14, 108);
+            this.textBox2.Location = new System.Drawing.Point(14, 67);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(126, 116);
+            this.textBox2.Size = new System.Drawing.Size(126, 147);
             this.textBox2.TabIndex = 2;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(15, 230);
+            this.dateTimePicker1.Location = new System.Drawing.Point(15, 220);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(127, 19);
             this.dateTimePicker1.TabIndex = 5;
@@ -215,77 +205,47 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
-            // button3
+            // dateCopyButton
             // 
-            this.button3.Image = global::WindowsFormsApp_Helper.Properties.Resources.copy;
-            this.button3.Location = new System.Drawing.Point(148, 213);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(36, 36);
-            this.button3.TabIndex = 4;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.button3, "コピー");
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            this.dateCopyButton.Image = global::WindowsFormsApp_Helper.Properties.Resources.copy;
+            this.dateCopyButton.Location = new System.Drawing.Point(148, 213);
+            this.dateCopyButton.Name = "dateCopyButton";
+            this.dateCopyButton.Size = new System.Drawing.Size(36, 36);
+            this.dateCopyButton.TabIndex = 4;
+            this.dateCopyButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.dateCopyButton, "コピー");
+            this.dateCopyButton.UseVisualStyleBackColor = true;
+            this.dateCopyButton.Click += new System.EventHandler(this.dateCopyButton_Click);
             // 
-            // button2
+            // multipleLineCopyButton
             // 
-            this.button2.Image = global::WindowsFormsApp_Helper.Properties.Resources.copy;
-            this.button2.Location = new System.Drawing.Point(148, 108);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(36, 36);
-            this.button2.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.button2, "コピー");
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Image = global::WindowsFormsApp_Helper.Properties.Resources.copy;
-            this.button1.Location = new System.Drawing.Point(147, 34);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 36);
-            this.button1.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.button1, "コピー");
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 7);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "単一行加工";
+            this.multipleLineCopyButton.Image = global::WindowsFormsApp_Helper.Properties.Resources.copy;
+            this.multipleLineCopyButton.Location = new System.Drawing.Point(146, 67);
+            this.multipleLineCopyButton.Name = "multipleLineCopyButton";
+            this.multipleLineCopyButton.Size = new System.Drawing.Size(36, 36);
+            this.multipleLineCopyButton.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.multipleLineCopyButton, "コピー");
+            this.multipleLineCopyButton.UseVisualStyleBackColor = true;
+            this.multipleLineCopyButton.Click += new System.EventHandler(this.multileLineCopyButton_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 66);
+            this.label8.Location = new System.Drawing.Point(12, 11);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 18;
             this.label8.Text = "複数行加工";
             // 
-            // checkBox1
+            // surroundMultipleLineCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(14, 23);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(69, 16);
-            this.checkBox1.TabIndex = 19;
-            this.checkBox1.Text = "(  )で囲う";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(15, 86);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(69, 16);
-            this.checkBox2.TabIndex = 20;
-            this.checkBox2.Text = "(  )で囲う";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.surroundMultipleLineCheckBox.AutoSize = true;
+            this.surroundMultipleLineCheckBox.Location = new System.Drawing.Point(14, 26);
+            this.surroundMultipleLineCheckBox.Name = "surroundMultipleLineCheckBox";
+            this.surroundMultipleLineCheckBox.Size = new System.Drawing.Size(69, 16);
+            this.surroundMultipleLineCheckBox.TabIndex = 20;
+            this.surroundMultipleLineCheckBox.Text = "(  )で囲う";
+            this.surroundMultipleLineCheckBox.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
@@ -419,22 +379,29 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Controls.Add(this.exclusionSingleQuoteCheckBox);
             this.tabPage3.Controls.Add(this.dateTimePicker1);
-            this.tabPage3.Controls.Add(this.button3);
-            this.tabPage3.Controls.Add(this.checkBox2);
-            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.dateCopyButton);
+            this.tabPage3.Controls.Add(this.surroundMultipleLineCheckBox);
             this.tabPage3.Controls.Add(this.label8);
-            this.tabPage3.Controls.Add(this.checkBox1);
-            this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.textBox2);
-            this.tabPage3.Controls.Add(this.button2);
+            this.tabPage3.Controls.Add(this.multipleLineCopyButton);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(757, 259);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "加工";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // exclusionSingleQuoteCheckBox
+            // 
+            this.exclusionSingleQuoteCheckBox.AutoSize = true;
+            this.exclusionSingleQuoteCheckBox.Location = new System.Drawing.Point(14, 45);
+            this.exclusionSingleQuoteCheckBox.Name = "exclusionSingleQuoteCheckBox";
+            this.exclusionSingleQuoteCheckBox.Size = new System.Drawing.Size(151, 16);
+            this.exclusionSingleQuoteCheckBox.TabIndex = 21;
+            this.exclusionSingleQuoteCheckBox.Text = "シングルクォーテーションなし";
+            this.exclusionSingleQuoteCheckBox.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -462,12 +429,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button multipleLineCopyButton;
+        private System.Windows.Forms.Button dateCopyButton;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
@@ -481,10 +445,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox surroundMultipleLineCheckBox;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -499,6 +461,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox exclusionSingleQuoteCheckBox;
     }
 }
 
